@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GTA 6 no PC: port oficial e recompilação</title>
+<style>
+:root{--bg:#14102b;--panel:#1d1840;--ink:#f3e9dc;--mute:#b8aec4;--pink:#ff5c8a;--teal:#2ee6c5;--amber:#ffc857;--line:#3a3366;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.65 system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:var(--teal)}
+a:focus-visible,summary:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
+.wrap{max-width:860px;margin:0 auto;padding:0 20px}
+header{padding:64px 0 28px;border-bottom:1px solid var(--line)}
+h1{font:700 clamp(2.2rem,6vw,3.8rem)/1.05 Georgia,"Times New Roman",serif;margin:0 0 16px;letter-spacing:-.02em}
+h1 span{color:var(--pink)}
+.lead{color:var(--mute);max-width:62ch;margin:0}
+h2{font:700 1.7rem/1.2 Georgia,serif;margin:0 0 14px}
+section{padding:40px 0;border-bottom:1px solid var(--line)}
+p{max-width:68ch}
+.board{display:grid;gap:12px;margin-top:28px}
+.row{display:grid;grid-template-columns:150px 1fr;gap:14px;align-items:start;background:var(--panel);border-left:6px solid var(--line);padding:14px 16px;border-radius:4px}
+.row b{display:block}
+.ok{border-left-color:var(--teal)}.no{border-left-color:var(--pink)}.maybe{border-left-color:var(--amber)}
+.tag{font-weight:700}
+.ok .tag{color:var(--teal)}.no .tag{color:var(--pink)}.maybe .tag{color:var(--amber)}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:.95rem}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--mute);font-weight:600}
+.scroll{overflow-x:auto}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:16px}
+.card{background:var(--panel);padding:16px;border-radius:4px;border-top:4px solid var(--pink)}
+.card:nth-child(2){border-top-color:var(--teal)}.card:nth-child(3){border-top-color:var(--amber)}
+.card h3{margin:0 0 8px;font-size:1.05rem}
+.card p{margin:0;font-size:.95rem;color:var(--mute)}
+details{background:var(--panel);border-radius:4px;padding:12px 16px;margin:10px 0}
+summary{cursor:pointer;font-weight:600}
+.note{border:1px solid var(--amber);padding:14px 16px;border-radius:4px;margin-top:18px}
+footer{padding:28px 0 56px;color:var(--mute);font-size:.9rem}
+li{margin:6px 0}
+.vids{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin:16px 0}
+.vid{background:var(--panel);border-radius:4px;padding:10px}
+.vid video{width:100%;max-height:420px;background:#000;border-radius:3px;display:block}
+.vid p{margin:8px 0 0;font-size:.9rem;color:var(--mute)}
+h3.sub{font-size:1.15rem;margin:28px 0 4px}
+@media(max-width:560px){.row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<h1>GTA 6 no PC: <span>port oficial</span> ou recompilação?</h1>
+<p class="lead">O jogo saiu em 19 de novembro de 2026 só para PS5 e Xbox Series X|S. Esta página separa o que é confirmado, o que é relato de imprensa e o que é boato sobre a chegada ao PC. Informações verificadas em 22 de novembro de 2026.</p>
+<div class="board" aria-label="Estado atual">
+<div class="row ok"><span class="tag">Confirmado</span><span><b>Lançamento nos consoles</b>PS5 e Xbox Series X|S em 19/11/2026.</span></div>
+<div class="row no"><span class="tag">Não anunciado</span><span><b>Versão oficial para PC</b>A Rockstar não divulgou data, janela, requisitos nem página de loja.</span></div>
+<div class="row maybe"><span class="tag">Não verificado</span><span><b>Port não oficial</b>Há alegações de recompilação e vazamentos, mas nenhuma versão jogável foi confirmada por fonte confiável.</span></div>
+</div>
+</div></header>
+
+<main class="wrap">
+<section id="oficial">
+<h2>O que dizem sobre o port oficial</h2>
+<p>A Rockstar não anunciou PC. A Take-Two já disse que haverá uma versão para PC, mas que os fãs de console vêm primeiro. A imprensa lembra que a empresa costuma esperar para lançar no PC.</p>
+<div class="scroll"><table>
+<thead><tr><th>Jogo</th><th>Consoles</th><th>PC</th></tr></thead>
+<tbody>
+<tr><td>GTA IV</td><td>29/04/2008</td><td>03/12/2008</td></tr>
+<tr><td>GTA V</td><td>17/09/2013 (PS3 e Xbox 360)</td><td>14/04/2015</td></tr>
+<tr><td>GTA 6</td><td>19/11/2026</td><td>sem data</td></tr>
+</tbody></table></div>
+<p>Um relatório atribuído ao GamesBeat, de 13 de outubro, diz que o PC sairia no primeiro trimestre de 2027. A Rockstar não confirmou isso. Trate como relato com fontes anônimas, não como data.</p>
+</section>
+
+<section id="tecnica">
+<h2>Port, emulação e recompilação</h2>
+<div class="cols">
+<div class="card"><h3>Port oficial</h3><p>O estúdio recompila o próprio código-fonte para Windows, troca as APIs gráficas e de sistema do console e otimiza para hardware de PC variado.</p></div>
+<div class="card"><h3>Emulação</h3><p>Um programa imita o hardware do console em tempo de execução. Costuma custar desempenho e exige compatibilidade com firmware e GPU.</p></div>
+<div class="card"><h3>Recompilação</h3><p>O executável do console é traduzido para código nativo de PC, e as bibliotecas do sistema são substituídas por versões próprias, sem emular o console inteiro.</p></div>
+</div>
+<details><summary>Por que um jogo deste tamanho é difícil de recompilar</summary>
+<ul>
+<li>Os shaders da GPU do console precisam ser convertidos para uma API de PC.</li>
+<li>As bibliotecas de sistema do console precisam de substitutos completos, não só dos trechos que o jogo usa no menu.</li>
+<li>Um mundo aberto grande, com iluminação pesada, exige muito desempenho mesmo depois de rodar. Um repórter da GamesRadar apontou que isso deve dificultar o trabalho dos recompiladores.</li>
+<li>Atualizações obrigatórias de firmware podem invalidar arquivos já convertidos, segundo membros do Discord do projeto AnyPS5 citados pela Decrypt.</li>
+<li>Recursos online e verificações de conta dependem dos servidores da Rockstar.</li>
+</ul></details>
+</section>
+
+<section id="boatos">
+<h2>O que circula agora</h2>
+<ul>
+<li><b>AnyPS5:</b> projeto de código aberto que converte executáveis de PS5 em programas nativos de PC. Segundo a Decrypt, o próprio projeto afirma que 100% dos shaders de GPU e 88% das bibliotecas de sistema foram portados. São números do projeto, sem verificação independente.</li>
+<li><b>Emuladores de PS5:</b> a imprensa cita SharpEmu, RPCSX, Kyty e o KyTyPS5, e diz que seguem experimentais. Um deles já teria rodado GTA V no PC.</li>
+<li><b>Vazamento do Xbox:</b> reportagens dizem que o hacker Cyberleek divulgou partes da versão de Xbox no lançamento, o que poderia facilitar um port. A ComputerBase alerta que há muitos falsos e provas de conceito, e pede cuidado com a própria segurança.</li>
+</ul>
+<div class="note"><b>Aviso.</b> Este site não hospeda nem aponta para arquivos vazados do jogo. Baixar ou executar binários vazados viola direitos autorais e costuma esconder malware. Se o port oficial sair, ele será a forma segura de jogar.</div>
+</section>
+
+<section id="comunidade">
+<h2>Vídeos e relatos da comunidade</h2>
+<p>Estes vídeos e relatos foram enviados ao site por quem o mantém e não foram verificados de forma independente. Eles mostram o que cada autor diz estar fazendo. Não provam que o jogo roda de forma estável nem que há uma versão pronta para o público.</p>
+
+<h3 class="sub">Marcelo Miyake, comunidade da Portheon</h3>
+<p>Segundo o relato recebido, ele desenvolve um projeto sobre um emulador e já publicou estes três vídeos no Discord da Portheon. O mesmo relato diz que ontem (21/11) ele escreveu que o projeto está perto de ser lançado. Não há data nem confirmação.</p>
+<div class="vids">
+<figure class="vid" style="margin:0"><video controls preload="metadata" src="videos/1.mp4"></video><p>Vídeo 1 (6 s). Parece filmado de uma tela e mostra a arte do jogo.</p></figure>
+<figure class="vid" style="margin:0"><video controls preload="metadata" src="videos/2.mp4"></video><p>Vídeo 2 (6 s). Personagem em um deque sobre a água, com um contador de desempenho no canto.</p></figure>
+<figure class="vid" style="margin:0"><video controls preload="metadata" src="videos/3.mp4"></video><p>Vídeo 3 (18 s). Personagem andando por uma casa e saindo para uma varanda.</p></figure>
+</div>
+
+<h3 class="sub">Outro desenvolvedor, novidades no servidor do Aminzera</h3>
+<p>Segundo o relato, este desenvolvedor não tem servidor próprio no Discord e diz estar avançando bem no projeto. As novidades dele aparecem no servidor do Aminzera. Os vídeos abaixo são dele.</p>
+<div class="vids">
+<figure class="vid" style="margin:0"><video controls preload="metadata" src="videos/316eb349745545fcac0e68bc4661a918__1_.mov"></video><p>Vídeo 4 (21 s). Uma janela chamada "GTA6 Test Build" mostra a arte do jogo e depois o logotipo da Rockstar.</p></figure>
+</div>
+<div class="note"><b>Cuidado.</b> Gravações de tela são fáceis de editar e de tirar de contexto. Rodar o jogo a partir de arquivos do console exige cópias do jogo, e distribuí-las ou usá-las sem autorização viola direitos autorais. Este site não divulga convites de servidores nem links para essas cópias.</div>
+</section>
+
+<section id="fontes">
+<h2>Fontes consultadas</h2>
+<ul>
+<li><a href="https://www.videogameschronicle.com/guide/gta-6-pc-version/">VGC: guia da versão para PC</a></li>
+<li><a href="https://www.pcgamesn.com/gta-6-release-date">PCGamesN: data de lançamento e estimativa para PC</a></li>
+<li><a href="https://www.dexerto.com/gta/gta-6-releasing-on-pc-much-earlier-than-expected-report-3418569/">Dexerto: relato do primeiro trimestre de 2027</a></li>
+<li><a href="https://decrypt.co/380833/ai-powered-playstation-crack-could-let-you-play-gta-6-on-pc-at-launch">Decrypt: projeto AnyPS5</a></li>
+<li><a href="https://www.computerbase.de/news/gaming/fakes-vs-proof-of-concepts-wann-laeuft-gta-6-per-inoffiziellem-port-auf-dem-pc.100428/">ComputerBase: falsos e provas de conceito</a></li>
+<li><a href="https://www.gamesradar.com/games/grand-theft-auto/gta-6-pc-port-could-come-from-hackers-before-rockstar-if-cyberleek-makes-good-on-its-latest-threat-this-community-will-have-it-emulated-inside-a-week/">GamesRadar: port de hackers e dificuldade técnica</a></li>
+<li><a href="https://arynews.tv/gta-6-xbox-leak-sparks-hopes-for-quick-unofficial-pc-port">ARY News: vazamento do Xbox e recompilação</a></li>
+</ul>
+</section>
+</main>
+<footer><div class="wrap">Site informativo independente, sem relação com a Rockstar Games ou a Take-Two. Os fatos mudam rápido, confira as fontes antes de decidir qualquer compra.</div></footer>
+</body>
+</html>
