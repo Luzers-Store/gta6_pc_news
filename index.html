@@ -3,134 +3,144 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GTA 6 no PC: port oficial e recompilação</title>
+<title>Posso rodar Leonida?</title>
 <style>
-:root{--bg:#14102b;--panel:#1d1840;--ink:#f3e9dc;--mute:#b8aec4;--pink:#ff5c8a;--teal:#2ee6c5;--amber:#ffc857;--line:#3a3366;color-scheme:dark}
+:root{--bg:#160f2e;--line:#3d3570;--ink:#f6ecdf;--mute:#b9afc7;--pink:#ff6aa0;--teal:#35e8c8;--amber:#ffc857;--orange:#ff9f5c;--red:#ff6b6b;color-scheme:dark}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.65 system-ui,-apple-system,"Segoe UI",sans-serif}
-a{color:var(--teal)}
-a:focus-visible,summary:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
-.wrap{max-width:860px;margin:0 auto;padding:0 20px}
-header{padding:64px 0 28px;border-bottom:1px solid var(--line)}
-h1{font:700 clamp(2.2rem,6vw,3.8rem)/1.05 Georgia,"Times New Roman",serif;margin:0 0 16px;letter-spacing:-.02em}
+body{margin:0;min-height:100vh;background:linear-gradient(160deg,#160f2e,#3a1c5a 60%,#7a2f5e);color:var(--ink);font:16px/1.55 system-ui,"Segoe UI",sans-serif}
+.wrap{max-width:1000px;margin:0 auto;padding:36px 18px 60px}
+h1{font:700 clamp(2rem,5vw,3.2rem)/1.05 Georgia,serif;margin:0 0 8px}
 h1 span{color:var(--pink)}
-.lead{color:var(--mute);max-width:62ch;margin:0}
-h2{font:700 1.7rem/1.2 Georgia,serif;margin:0 0 14px}
-section{padding:40px 0;border-bottom:1px solid var(--line)}
-p{max-width:68ch}
-.board{display:grid;gap:12px;margin-top:28px}
-.row{display:grid;grid-template-columns:150px 1fr;gap:14px;align-items:start;background:var(--panel);border-left:6px solid var(--line);padding:14px 16px;border-radius:4px}
-.row b{display:block}
-.ok{border-left-color:var(--teal)}.no{border-left-color:var(--pink)}.maybe{border-left-color:var(--amber)}
-.tag{font-weight:700}
-.ok .tag{color:var(--teal)}.no .tag{color:var(--pink)}.maybe .tag{color:var(--amber)}
-table{width:100%;border-collapse:collapse;margin:16px 0;font-size:.95rem}
-th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+.sub{color:var(--mute);margin:0 0 22px;max-width:62ch}
+.grid{display:grid;grid-template-columns:minmax(260px,1fr) 1.25fr;gap:20px}
+.card{background:rgba(33,26,69,.93);border:1px solid var(--line);border-radius:14px;padding:20px}
+label{display:block;font-weight:600;color:var(--mute);margin:12px 0 5px;font-size:.9rem}
+label:first-child{margin-top:0}
+select,input{width:100%;background:#150e2c;color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font:inherit}
+select:focus-visible,input:focus-visible,button:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.presets{display:flex;flex-wrap:wrap;gap:8px}
+button{background:#2c2358;color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:8px 12px;cursor:pointer;font:inherit;font-size:.85rem}
+button:hover{border-color:var(--teal)}
+h2{font:700 1.5rem/1.2 Georgia,serif;margin:0 0 4px}
+.row{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid var(--line)}
+.row small{display:block;color:var(--mute)}
+.b{font-weight:700;white-space:nowrap}
+.acima{color:var(--teal)}.faixa{color:var(--amber)}.perto{color:var(--orange)}.abaixo{color:var(--red)}.nd,.na{color:var(--mute)}
+table{width:100%;border-collapse:collapse;margin-top:10px;font-size:.9rem}
+th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line)}
 th{color:var(--mute);font-weight:600}
 .scroll{overflow-x:auto}
-.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:16px}
-.card{background:var(--panel);padding:16px;border-radius:4px;border-top:4px solid var(--pink)}
-.card:nth-child(2){border-top-color:var(--teal)}.card:nth-child(3){border-top-color:var(--amber)}
-.card h3{margin:0 0 8px;font-size:1.05rem}
-.card p{margin:0;font-size:.95rem;color:var(--mute)}
-details{background:var(--panel);border-radius:4px;padding:12px 16px;margin:10px 0}
-summary{cursor:pointer;font-weight:600}
-.note{border:1px solid var(--amber);padding:14px 16px;border-radius:4px;margin-top:18px}
-footer{padding:28px 0 56px;color:var(--mute);font-size:.9rem}
-li{margin:6px 0}
-.vids{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin:16px 0}
-.vid{background:var(--panel);border-radius:4px;padding:10px}
-.vid video{width:100%;max-height:420px;background:#000;border-radius:3px;display:block}
-.vid p{margin:8px 0 0;font-size:.9rem;color:var(--mute)}
-h3.sub{font-size:1.15rem;margin:28px 0 4px}
-@media(max-width:560px){.row{grid-template-columns:1fr}}
+.warn{margin-top:14px;padding:12px;border:1px solid var(--amber);border-radius:10px;font-size:.9rem}
+details{margin-top:12px;color:var(--mute);font-size:.88rem}
+summary{cursor:pointer;color:var(--ink)}
+@media(max-width:760px){.grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-<header><div class="wrap">
-<h1>GTA 6 no PC: <span>port oficial</span> ou recompilação?</h1>
-<p class="lead">O jogo saiu em 19 de novembro de 2026 só para PS5 e Xbox Series X|S. Esta página separa o que é confirmado, o que é relato de imprensa e o que é boato sobre a chegada ao PC. Informações verificadas em 22 de novembro de 2026.</p>
-<div class="board" aria-label="Estado atual">
-<div class="row ok"><span class="tag">Confirmado</span><span><b>Lançamento nos consoles</b>PS5 e Xbox Series X|S em 19/11/2026.</span></div>
-<div class="row no"><span class="tag">Não anunciado</span><span><b>Versão oficial para PC</b>A Rockstar não divulgou data, janela, requisitos nem página de loja.</span></div>
-<div class="row maybe"><span class="tag">Não verificado</span><span><b>Port não oficial</b>Há alegações de recompilação e vazamentos, mas nenhuma versão jogável foi confirmada por fonte confiável.</span></div>
+<div class="wrap">
+<h1>Posso rodar <span>Leonida?</span></h1>
+<p class="sub">Compare o seu PC com os níveis citados pelo desenvolvedor e pela comunidade. O dev diz que o Leonida ainda não está pronto nem é jogável, então isto é só uma estimativa.</p>
+<div class="grid">
+<div class="card">
+<label for="ref">Comparar com</label>
+<select id="ref"></select>
+<label for="cpu">CPU (digite ou escolha)</label>
+<input id="cpu" list="cpus" placeholder="Ex.: Xeon E5-2690 v4" autocomplete="off">
+<datalist id="cpus"></datalist>
+<label for="gpu">GPU (digite ou escolha)</label>
+<input id="gpu" list="gpus" placeholder="Ex.: RX 580 2048SP" autocomplete="off">
+<datalist id="gpus"></datalist>
+<div class="two">
+<div><label for="ramt">Tipo de RAM</label><select id="ramt"><option>DDR4</option><option>DDR5</option><option>DDR3</option></select></div>
+<div><label for="ram">RAM (GB)</label><input id="ram" type="number" min="4" max="128" step="4" value="16"></div>
 </div>
-</div></header>
-
-<main class="wrap">
-<section id="oficial">
-<h2>O que dizem sobre o port oficial</h2>
-<p>A Rockstar não anunciou PC. A Take-Two já disse que haverá uma versão para PC, mas que os fãs de console vêm primeiro. A imprensa lembra que a empresa costuma esperar para lançar no PC.</p>
-<div class="scroll"><table>
-<thead><tr><th>Jogo</th><th>Consoles</th><th>PC</th></tr></thead>
-<tbody>
-<tr><td>GTA IV</td><td>29/04/2008</td><td>03/12/2008</td></tr>
-<tr><td>GTA V</td><td>17/09/2013 (PS3 e Xbox 360)</td><td>14/04/2015</td></tr>
-<tr><td>GTA 6</td><td>19/11/2026</td><td>sem data</td></tr>
-</tbody></table></div>
-<p>Um relatório atribuído ao GamesBeat, de 13 de outubro, diz que o PC sairia no primeiro trimestre de 2027. A Rockstar não confirmou isso. Trate como relato com fontes anônimas, não como data.</p>
-</section>
-
-<section id="tecnica">
-<h2>Port, emulação e recompilação</h2>
-<div class="cols">
-<div class="card"><h3>Port oficial</h3><p>O estúdio recompila o próprio código-fonte para Windows, troca as APIs gráficas e de sistema do console e otimiza para hardware de PC variado.</p></div>
-<div class="card"><h3>Emulação</h3><p>Um programa imita o hardware do console em tempo de execução. Costuma custar desempenho e exige compatibilidade com firmware e GPU.</p></div>
-<div class="card"><h3>Recompilação</h3><p>O executável do console é traduzido para código nativo de PC, e as bibliotecas do sistema são substituídas por versões próprias, sem emular o console inteiro.</p></div>
+<label for="sp">Velocidade da RAM (MHz)</label>
+<input id="sp" type="number" min="800" max="9000" step="200" value="3200">
+<div class="two">
+<div><label for="sto">Armazenamento</label><select id="sto"><option value="NVME">SSD NVMe</option><option value="SATA">SSD SATA</option><option value="HD">HD</option></select></div>
+<div><label for="gb">Espaço livre (GB)</label><input id="gb" type="number" min="0" step="50" value="500"></div>
 </div>
-<details><summary>Por que um jogo deste tamanho é difícil de recompilar</summary>
-<ul>
-<li>Os shaders da GPU do console precisam ser convertidos para uma API de PC.</li>
-<li>As bibliotecas de sistema do console precisam de substitutos completos, não só dos trechos que o jogo usa no menu.</li>
-<li>Um mundo aberto grande, com iluminação pesada, exige muito desempenho mesmo depois de rodar. Um repórter da GamesRadar apontou que isso deve dificultar o trabalho dos recompiladores.</li>
-<li>Atualizações obrigatórias de firmware podem invalidar arquivos já convertidos, segundo membros do Discord do projeto AnyPS5 citados pela Decrypt.</li>
-<li>Recursos online e verificações de conta dependem dos servidores da Rockstar.</li>
-</ul></details>
-</section>
-
-<section id="boatos">
-<h2>O que circula agora</h2>
-<ul>
-<li><b>AnyPS5:</b> projeto de código aberto que converte executáveis de PS5 em programas nativos de PC. Segundo a Decrypt, o próprio projeto afirma que 100% dos shaders de GPU e 88% das bibliotecas de sistema foram portados. São números do projeto, sem verificação independente.</li>
-<li><b>Emuladores de PS5:</b> a imprensa cita SharpEmu, RPCSX, Kyty e o KyTyPS5, e diz que seguem experimentais. Um deles já teria rodado GTA V no PC.</li>
-<li><b>Vazamento do Xbox:</b> reportagens dizem que o hacker Cyberleek divulgou partes da versão de Xbox no lançamento, o que poderia facilitar um port. A ComputerBase alerta que há muitos falsos e provas de conceito, e pede cuidado com a própria segurança.</li>
-</ul>
-<div class="note"><b>Aviso.</b> Este site não hospeda nem aponta para arquivos vazados do jogo. Baixar ou executar binários vazados viola direitos autorais e costuma esconder malware. Se o port oficial sair, ele será a forma segura de jogar.</div>
-</section>
-
-<section id="comunidade">
-<h2>Vídeos e relatos da comunidade</h2>
-<p>Estes vídeos e relatos foram enviados ao site por quem o mantém e não foram verificados de forma independente. Eles mostram o que cada autor diz estar fazendo. Não provam que o jogo roda de forma estável nem que há uma versão pronta para o público.</p>
-
-<h3 class="sub">Marcelo Miyake, comunidade da Portheon</h3>
-<p>Segundo o relato recebido, ele desenvolve um projeto sobre um emulador e já publicou estes três vídeos no Discord da Portheon. O mesmo relato diz que ontem (21/11) ele escreveu que o projeto está perto de ser lançado. Não há data nem confirmação.</p>
-<div class="vids">
-<figure class="vid" style="margin:0"><video controls preload="metadata" src="videos/1.mp4"></video><p>Vídeo 1 (6 s). Parece filmado de uma tela e mostra a arte do jogo.</p></figure>
-<figure class="vid" style="margin:0"><video controls preload="metadata" src="videos/2.mp4"></video><p>Vídeo 2 (6 s). Personagem em um deque sobre a água, com um contador de desempenho no canto.</p></figure>
-<figure class="vid" style="margin:0"><video controls preload="metadata" src="videos/3.mp4"></video><p>Vídeo 3 (18 s). Personagem andando por uma casa e saindo para uma varanda.</p></figure>
+<label>Meus PCs</label>
+<div class="presets" id="presets"></div>
 </div>
-
-<h3 class="sub">Outro desenvolvedor, novidades no servidor do Aminzera</h3>
-<p>Segundo o relato, este desenvolvedor não tem servidor próprio no Discord e diz estar avançando bem no projeto. As novidades dele aparecem no servidor do Aminzera. Os vídeos abaixo são dele.</p>
-<div class="vids">
-<figure class="vid" style="margin:0"><video controls preload="metadata" src="videos/316eb349745545fcac0e68bc4661a918__1_.mov"></video><p>Vídeo 4 (21 s). Uma janela chamada "GTA6 Test Build" mostra a arte do jogo e depois o logotipo da Rockstar.</p></figure>
+<div class="card">
+<h2 id="title"></h2>
+<p class="sub" id="refnote" style="margin:0 0 6px"></p>
+<div id="rows"></div>
+<div class="warn" id="warn"></div>
+<h2 style="margin-top:20px;font-size:1.2rem">Resumo contra todos os níveis</h2>
+<div class="scroll"><table><thead><tr><th>Nível</th><th>CPU</th><th>GPU</th><th>Geral</th></tr></thead><tbody id="all"></tbody></table></div>
+<details><summary>Fontes e limites</summary>
+<p>Os níveis vêm de duas notas coladas pelo dono do site: uma que diz ser do desenvolvedor do Leonida e outra de um membro da comunidade. Não consegui confirmar quem as escreveu, e nenhuma é da Rockstar. O dev diz que DLSS e FSR são suportados, que a RX 580 roda com gráficos ruins e que o mínimo é uma RTX série 30 de 8 GB com Ryzen 5 5600X, DDR4 3200 e 16 GB. A resolução 1080p em low é expectativa do dono do site, não do dev. Os índices de CPU e GPU são estimativas minhas, de memória, sem benchmark conferido. A VRAM de alguns modelos varia, como a da RX 580 2048SP. Só a RTX 5060 Ti e a RX 9060 XT, usadas como referência do PS5 Pro, estão na lista da série 50 e da série 9000, e o índice delas é estimado por mim.</p></details>
 </div>
-<div class="note"><b>Cuidado.</b> Gravações de tela são fáceis de editar e de tirar de contexto. Rodar o jogo a partir de arquivos do console exige cópias do jogo, e distribuí-las ou usá-las sem autorização viola direitos autorais. Este site não divulga convites de servidores nem links para essas cópias.</div>
-</section>
+</div>
+</div>
+<script>
+// [nome, índice relativo de desempenho (GTX 1060 6GB = 100), VRAM em GB]
+const G=[["GTX 1050 Ti",60,4],["GTX 1060 6GB",100,6],["GTX 1650",87,4],["GTX 1650 Super",115,4],["GTX 1660",127,6],["GTX 1660 Super",142,6],["GTX 1660 Ti",148,6],["RTX 2060",166,6],["RTX 2060 Super",195,8],["RTX 2070 Super",235,8],["RTX 3050 6GB",130,6],["RTX 3050 8GB",150,8],["RTX 3060 12GB",190,12],["RTX 3060 Ti",250,8],["RTX 3070",285,8],["RTX 4060",230,8],["RTX 4060 Ti",275,8],["RTX 5060 Ti 16GB",315,16],["RX 9060 XT 16GB",310,16],["RX 570 4GB",95,4],["RX 580 2048SP",100,8],["RX 580 8GB",115,8],["RX 5500 XT 8GB",118,8],["RX 5600 XT",160,6],["RX 5700 XT",195,8],["RX 6500 XT",120,4],["RX 6600",200,8],["RX 6600 XT",220,8],["RX 6650 XT",230,8],["RX 6700 XT",275,12],["RX 7600",235,8]];
+// [nome, índice relativo em jogos (Ryzen 5 3600 = 100)]
+const C=[["Core i3-12100F",110],["Core i5-7400",65],["Core i5-8400",90],["Core i5-9400F",95],["Core i5-10400F",105],["Core i5-12400F",145],["Core i7-7700",80],["Core i7-8700",105],["Ryzen 5 1600",70],["Ryzen 5 2600",80],["Ryzen 5 3600",100],["Ryzen 5 4500",98],["Ryzen 5 5500",120],["Ryzen 5 5600",140],["Ryzen 5 5600G",130],["Ryzen 5 5600X",145],["Ryzen 7 3700X",108],["Ryzen 7 5700X",155],["Xeon E5-1650 v3",85],["Xeon E5-2640 v4",82],["Xeon E5-2650 v4",78],["Xeon E5-2667 v3",95],["Xeon E5-2680 v4",90],["Xeon E5-2690 v4",95]];
+// c=0 significa que o dev não deu referência de CPU para esse nível
+const R=[
+{n:"Xbox Series S",c:100,g:115,v:0,t:"Segundo a lista da comunidade: Ryzen 5 3600 (ou Zen 2 de 8 núcleos), GPU GTX 1650 Super / 1660 / RX 5500 XT e 16 GB de RAM."},
+{n:"Xbox Series X",c:110,g:260,v:0,t:"Ryzen 7 3700X ou Ryzen 5 5600; GPU RTX 3060 Ti / 3070 / RX 6700 XT / RX 6800; 16 GB; SSD NVMe de 1 TB."},
+{n:"PS5",c:108,g:270,v:0,t:"Ryzen 7 3700X ou Zen 2 de 8 núcleos; GPU RTX 2070 Super / 3070 / RX 6700 XT; 16 GB; SSD NVMe rápido."},
+{n:"PS5 Pro",c:130,g:310,v:0,t:"Segundo a lista da comunidade: GPU RX 9060 XT 16 GB ou RTX 5060 Ti 16 GB, com CPU Zen 2 ou Zen 3 de 8 núcleos (3700X ou 5700X)."},
+{n:"Mínimo do dev (RTX 30 de 8 GB)",c:145,g:150,v:8,t:"Ryzen 5 5600X (talvez o 5600 sem X), RTX série 30 com 8 GB ou equivalente AMD, DDR4 3200 MHz ou mais, 16 GB, 250 GB ou mais. Para configurações baixas, mas não no lançamento."},
 
-<section id="fontes">
-<h2>Fontes consultadas</h2>
-<ul>
-<li><a href="https://www.videogameschronicle.com/guide/gta-6-pc-version/">VGC: guia da versão para PC</a></li>
-<li><a href="https://www.pcgamesn.com/gta-6-release-date">PCGamesN: data de lançamento e estimativa para PC</a></li>
-<li><a href="https://www.dexerto.com/gta/gta-6-releasing-on-pc-much-earlier-than-expected-report-3418569/">Dexerto: relato do primeiro trimestre de 2027</a></li>
-<li><a href="https://decrypt.co/380833/ai-powered-playstation-crack-could-let-you-play-gta-6-on-pc-at-launch">Decrypt: projeto AnyPS5</a></li>
-<li><a href="https://www.computerbase.de/news/gaming/fakes-vs-proof-of-concepts-wann-laeuft-gta-6-per-inoffiziellem-port-auf-dem-pc.100428/">ComputerBase: falsos e provas de conceito</a></li>
-<li><a href="https://www.gamesradar.com/games/grand-theft-auto/gta-6-pc-port-could-come-from-hackers-before-rockstar-if-cyberleek-makes-good-on-its-latest-threat-this-community-will-have-it-emulated-inside-a-week/">GamesRadar: port de hackers e dificuldade técnica</a></li>
-<li><a href="https://arynews.tv/gta-6-xbox-leak-sparks-hopes-for-quick-unofficial-pc-port">ARY News: vazamento do Xbox e recompilação</a></li>
-</ul>
-</section>
-</main>
-<footer><div class="wrap">Site informativo independente, sem relação com a Rockstar Games ou a Take-Two. Os fatos mudam rápido, confira as fontes antes de decidir qualquer compra.</div></footer>
+{n:"Low 1080p, mínimo (i7-7700 + RX 580 2048SP)",c:80,g:100,v:0,t:"Referência definida pelo dono do site: Core i7-7700, RX 580 2048SP, 16 GB DDR4 e gráfico baixo em 1080p. O dev só diz que a RX 580 roda com gráficos baixos. A CPU e a resolução são do dono do site, e ninguém testou isso no Leonida."},
+{n:"Low 1080p, recomendado (GTX 1660 + i5-12400F / Ryzen 5 5600)",c:140,g:127,v:6,t:"Core i5-12400F ou Ryzen 5 5600, GTX 1660, 16 GB DDR4, gráfico baixo em 1080p. Spec enviada pelo dono do site."},
+{n:"Low 1080p, confortável (RX 6700 XT)",c:140,g:275,v:8,t:"Core i5-12400F ou Ryzen 5 5600, RX 6700 XT, 16 GB DDR4, gráfico baixo em 1080p."}];
+const P=[["i7-7700 + RX 580 2048SP","Core i7-7700","RX 580 2048SP",16],["Xeon 2690 v4 + RX 7600","Xeon E5-2690 v4","RX 7600",16],["Ryzen 5 4500 + GTX 1660 Ti","Ryzen 5 4500","GTX 1660 Ti",16]];
+const RD=[["Ryzen 5 3600","GTX 1650 Super (ou GTX 1660 / RX 5500 XT)"],["Ryzen 7 3700X (ou Ryzen 5 5600)","RTX 3060 Ti / RTX 3070 / RX 6700 XT / RX 6800"],["Ryzen 7 3700X","RTX 2070 Super / RTX 3070 / RX 6700 XT"],["Zen 2 ou Zen 3 de 8 núcleos (3700X ou 5700X)","RX 9060 XT 16 GB ou RTX 5060 Ti 16 GB"],["Ryzen 5 5600X (talvez o 5600)","RTX série 30 de 8 GB ou equivalente AMD"],["Core i7-7700","RX 580 2048SP (o dev diz que a RX 580 roda)"],["Core i5-12400F ou Ryzen 5 5600","GTX 1660"],["Core i5-12400F ou Ryzen 5 5600","RX 6700 XT"]];
+// Modelos extras, índices estimados de memória e sem benchmark conferido
+G.push(["GT 1030",35,2],["GTX 750 Ti",40,2],["GTX 960 4GB",52,4],["GTX 970",75,4],["GTX 980",95,4],["GTX 980 Ti",125,6],["GTX 1050",50,2],["GTX 1630",65,4],["GTX 1060 3GB",90,3],["GTX 1070",140,8],["GTX 1070 Ti",165,8],["GTX 1080",175,8],["GTX 1080 Ti",230,11],["RX 550",30,2],["RX 560 4GB",55,4],["RX 460",50,4],["RX 470 4GB",90,4],["RX 480 8GB",105,8],["RX 570 8GB",100,8],["RX 590",125,8],["RX Vega 56",165,8],["RX Vega 64",185,8],["RX 5500 XT 4GB",112,4],["RX 5700",175,8],["RX 6400",90,4],["RX 6700",240,10],["RX 6750 XT",295,12],["RX 6800",340,16],["RX 6800 XT",395,16],["RX 6900 XT",435,16],["RX 6950 XT",460,16],["RX 7600 XT 16GB",250,16],["RX 7700 XT",340,12],["RX 7800 XT",415,16],["RX 7900 GRE",450,16],["RX 7900 XT",510,20],["RX 7900 XTX",590,24],["RX 9060 XT 8GB",305,8],["RX 9070",490,16],["RX 9070 XT",560,16],["RTX 2070",215,8],["RTX 2080",255,8],["RTX 2080 Super",270,8],["RTX 2080 Ti",310,11],["RTX 3060 8GB",180,8],["RTX 3070 Ti",315,8],["RTX 3080 10GB",380,10],["RTX 3080 Ti",415,12],["RTX 3090",440,24],["RTX 4060 Ti 16GB",280,16],["RTX 4070",335,12],["RTX 4070 Super",395,12],["RTX 4070 Ti",440,12],["RTX 4070 Ti Super",480,16],["RTX 4080",560,16],["RTX 4080 Super",575,16],["RTX 4090",750,24],["RTX 5050",225,8],["RTX 5060",270,8],["RTX 5060 Ti 8GB",310,8],["RTX 5070",395,12],["RTX 5070 Ti",520,16],["RTX 5080",610,16],["RTX 5090",880,32],["Arc A580",190,8],["Arc A750",215,8],["Arc A770 16GB",235,16],["Arc B570",235,10],["Arc B580",260,12]);
+C.push(["Core i3-3220",35],["Core i5-3330",45],["Core i5-3450",48],["Core i5-3470",50],["Core i5-3570K",55],["Core i7-3770",65],["Core i7-3770K",68],["Core i5-4460",58],["Core i5-4690K",68],["Core i7-4770",70],["Core i7-4790K",80],["Core i5-6400",70],["Core i5-6500",72],["Core i5-6600K",80],["Core i7-6700K",88],["Core i5-7500",75],["Core i5-7600K",85],["Core i7-7700K",90],["Core i3-8100",75],["Core i3-9100F",80],["Core i5-9600K",105],["Core i7-9700K",115],["Core i9-9900K",125],["Core i3-10100F",85],["Core i5-10600K",120],["Core i7-10700K",130],["Core i9-10900K",140],["Core i5-11400F",120],["Core i5-11600K",140],["Core i7-11700K",150],["Core i5-12600K",175],["Core i7-12700K",195],["Core i9-12900K",215],["Core i5-13400F",160],["Core i5-13600K",210],["Core i7-13700K",230],["Core i9-13900K",260],["Core i5-14400F",165],["Core i5-14600K",215],["Core i7-14700K",245],["Core i9-14900K",270],["FX-6300",40],["FX-8350",50],["Ryzen 3 1200",50],["Ryzen 3 3100",80],["Ryzen 3 3300X",95],["Ryzen 3 4100",82],["Ryzen 5 2600X",85],["Ryzen 5 3500",90],["Ryzen 5 3600X",105],["Ryzen 5 4600G",100],["Ryzen 5 PRO 4650G",100],["Ryzen 5 7500F",175],["Ryzen 5 7600",190],["Ryzen 5 7600X",200],["Ryzen 5 9600X",225],["Ryzen 7 1700",85],["Ryzen 7 2700X",95],["Ryzen 7 3800X",112],["Ryzen 7 5700G",140],["Ryzen 7 5700X3D",180],["Ryzen 7 5800X",160],["Ryzen 7 5800X3D",190],["Ryzen 7 7700",205],["Ryzen 7 7700X",215],["Ryzen 7 7800X3D",270],["Ryzen 7 9700X",240],["Ryzen 7 9800X3D",310],["Ryzen 9 5900X",170],["Ryzen 9 5950X",175],["Ryzen 9 7900X",235],["Ryzen 9 7950X",250],["Ryzen 9 7950X3D",275],["Ryzen 9 9900X",255],["Ryzen 9 9950X",270],["Xeon E3-1230 v3",70],["Xeon E3-1270 v3",72],["Xeon E5-1620 v3",75],["Xeon E5-1630 v3",80],["Xeon E5-1650 v4",95],["Xeon E5-1660 v3",92],["Xeon E5-2620 v3",70],["Xeon E5-2620 v4",70],["Xeon E5-2630 v3",70],["Xeon E5-2630 v4",72],["Xeon E5-2643 v3",85],["Xeon E5-2660 v3",80],["Xeon E5-2670 v3",80],["Xeon E5-2678 v3",82],["Xeon E5-2680 v3",82],["Xeon E5-2667 v4",98],["Xeon E5-2697 v3",90],["Xeon E5-2697 v4",88]);
+const $=id=>document.getElementById(id);
+const norm=s=>s.toLowerCase().replace(/[^a-z0-9]/g,"");
+const find=(L,q)=>{q=norm(q);if(!q)return null;return L.find(x=>norm(x[0])===q)||(q.length>=4?L.find(x=>norm(x[0]).includes(q)):null)||null};
+const st=r=>r>=1.08?"acima":r>=0.88?"faixa":r>=0.75?"perto":"abaixo";
+const lab={acima:"Acima do nível",faixa:"Bate com o nível",perto:"Quase bate",abaixo:"Abaixo do nível",nd:"Desconhecido",na:"Sem referência"};
+const rank={abaixo:0,perto:1,faixa:2,acima:3};
+C.forEach(x=>$("cpus").insertAdjacentHTML("beforeend",`<option value="${x[0]}">`));
+G.forEach(x=>$("gpus").insertAdjacentHTML("beforeend",`<option value="${x[0]}">`));
+R.forEach((x,i)=>$("ref").insertAdjacentHTML("beforeend",`<option value="${i}">${x.n}</option>`));
+P.forEach(p=>{const b=document.createElement("button");b.type="button";b.textContent=p[0];b.onclick=()=>{$("cpu").value=p[1];$("gpu").value=p[2];$("ram").value=p[3];$("ramt").value="DDR4";go()};$("presets").appendChild(b)});
+function ev(r,c,g,o){
+ const sc=r.c?(c?st(c[1]/r.c):"nd"):"na";
+ let sg=g?st(g[1]/r.g):"nd";
+ if(g&&r.v&&g[2]<r.v)sg="abaixo";
+ let sr=o.rt==="DDR3"||o.ram<16?"abaixo":(o.ram>=32||o.rt==="DDR5")?"acima":"faixa";
+ if(o.rt==="DDR4"&&o.sp<3200&&sr==="faixa")sr="perto";
+ const ss=o.sto==="HD"||o.gb<250?"abaixo":o.sto==="SATA"?"faixa":"acima";
+ const ap=[sc,sg].filter(x=>x!=="na"),known=ap.filter(x=>x!=="nd");
+ const all=ap.includes("abaixo")?"abaixo":(ap.includes("nd")||!known.length)?"nd":known.reduce((a,b)=>rank[a]<rank[b]?a:b);
+ return{sc,sg,sr,ss,all};
+}
+function go(){
+ const r=R[+$("ref").value],c=find(C,$("cpu").value),g=find(G,$("gpu").value);
+ const o={ram:+$("ram").value||0,rt:$("ramt").value,sp:+$("sp").value||0,sto:$("sto").value,gb:+$("gb").value||0};
+ const e=ev(r,c,g,o);
+ $("title").textContent="Comparação com "+r.n;
+ $("refnote").innerHTML="<b>Hardware do nível:</b> "+RD[+$("ref").value][0]+" + "+RD[+$("ref").value][1]+"<br>"+r.t;
+ const gv=g?(r.v&&g[2]<r.v?` (VRAM ${g[2]} GB, abaixo dos ${r.v} GB)`:` (VRAM ${g[2]} GB)`):"";
+ const ramTxt=o.rt==="DDR3"?"DDR3 é mais antiga que o DDR4 3200 que o dev pede":o.ram<16?"Abaixo dos 16 GB mínimos do dev":(o.rt==="DDR4"&&o.sp<3200)?"DDR4 abaixo dos 3200 MHz que o dev cita":(o.ram>=32||o.rt==="DDR5")?"A lista considera 32 GB DDR4 ou mais como ideal":"16 GB é o mínimo do dev, e o autor da lista não sabe se basta";
+ const stoTxt=o.sto==="HD"?"As notas pedem SSD NVMe rápido, e um HD fica abaixo disso":o.gb<250?"Abaixo dos 250 GB que o dev cita":o.sto==="SATA"?"SSD SATA: acima de HD, mas as notas falam em NVMe":"SSD NVMe e espaço suficiente";
+ const up=g?(/^RTX/.test(g[0])?"DLSS e FSR (segundo o dev)":"FSR (segundo o dev)"):"Informe a GPU";
+ const row=(a,b,cl,t)=>`<div class="row"><div><b>${a}</b><small>${b}</small></div><div class="b ${cl}">${t}</div></div>`;
+ $("rows").innerHTML=
+  row("CPU",c?c[0]:($("cpu").value?"Modelo não encontrado na lista":"Digite o seu modelo"),e.sc,lab[e.sc])+
+  row("GPU",g?g[0]+gv:($("gpu").value?"Modelo não encontrado na lista":"Digite o seu modelo"),e.sg,lab[e.sg])+
+  row("RAM",ramTxt,e.sr,lab[e.sr])+
+  row("Armazenamento",stoTxt,e.ss,lab[e.ss])+
+  row("Upscaling",up,"na","Informativo")+
+  row("Resultado geral","Pior entre CPU e GPU",e.all,lab[e.all]);
+ $("warn").textContent="Estimativa não oficial. O dev diz que o Leonida não está pronto nem é jogável, e o FPS não foi verificado.";
+ $("all").innerHTML=R.map(x=>{const y=ev(x,c,g,o);return`<tr><td>${x.n}</td><td class="${y.sc}">${lab[y.sc]}</td><td class="${y.sg}">${lab[y.sg]}</td><td class="b ${y.all}">${lab[y.all]}</td></tr>`}).join("");
+}
+["ref","cpu","gpu","ramt","ram","sp","sto","gb"].forEach(i=>$(i).addEventListener("input",go));
+go();
+</script>
 </body>
 </html>
